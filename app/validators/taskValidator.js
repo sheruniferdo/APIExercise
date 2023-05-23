@@ -13,4 +13,12 @@ function validateTask(req, res, next) {
     next();
 }
 
-module.exports = {validateTask};
+function validateUpdateTask(req, res, next) {
+    const result = TaskSchema.validate(req.body);
+    if(Object.keys(req.body).length === 0) {
+        return res.status(400).send("Invalid Request: No update parameters provided.");
+    }
+    next();
+}
+
+module.exports = {validateTask, validateUpdateTask};

@@ -41,10 +41,12 @@ exports.update = (req, res) => {
             message: "Task not found with id " + taskId
         });
     }
-
-    taskToUpdate.title = req.body.title;
-    taskToUpdate.description = req.body.description;
-
+    if(req.body.title){
+        taskToUpdate.title = req.body.title;
+    }
+    if(req.body.description){
+        taskToUpdate.description = req.body.description;
+    }
     res.send(taskToUpdate);
 }
 
